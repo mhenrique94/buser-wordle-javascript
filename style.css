@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "Wordle"; 
+    src: url("fonts/karnakcondensed-normal-700.woff") format("woff");
+  }
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.wordle-ft {
+    font-family: "Wordle", Arial, sans-serif;;
+    
+}
+
+body {
+    text-align: center;
+    height: 100vh;
+}
+
+p {
+    font-size: 30pt;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+#game {
+    height: calc(100vh - 52px);
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+#tela {
+    font-size: 16pt;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: auto;
+    
+}
+
+.grid-item {
+    border: 3px solid #939598;
+    margin: 3px;
+    align-items: center;
+    line-height: 62px;
+    text-align: center;
+    width: 62px;
+    font-size: 2.3rem;
+    
+}
+
+.botao-inativo {
+    border: 3px solid #D2D5DA;
+    background-color: white;
+}
+.botao-acerto {
+    background-color: #69A969;
+    border: 3px solid transparent;
+    color: whitesmoke;
+}
+
+.botao-quaseacerto {
+    background-color: #C7B563;
+    border: 3px solid transparent;
+    color: whitesmoke;
+}
+
+.botao-erro {
+    background-color: #787C7F;
+    border: 3px solid transparent;
+    color: whitesmoke;
+
+}
+
+.key-item {
+    display: inline-block;
+    /* padding: 12px; */
+    line-height: 65px;
+    border-radius: 4px;
+    font-size: 12pt;
+    width: 48px;
+    margin: 0 2px;
+}
+.key-regular {
+    background-color: #D2D5DA;
+}
+
+.key-erro{
+    background-color: #787C7F;
+}
+
+.key-quaseacerto {
+    background-color: #C7B563
+}
+
+.key-acerto {
+    background-color: #69A969;
+}
+
+.linha {
+    margin: auto auto 8px auto;
+    /* height: 62px; */
+}
+
+.enter {
+    width: 72px;
+
+}
+
+.special{
+    width: 72px;
+
+}
