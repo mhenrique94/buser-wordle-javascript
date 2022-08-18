@@ -80,7 +80,6 @@ p {
 
 .key-item {
     display: inline-block;
-    /* padding: 12px; */
     line-height: 65px;
     border-radius: 4px;
     font-size: 12pt;
@@ -105,7 +104,6 @@ p {
 
 .linha {
     margin: auto auto 8px auto;
-    /* height: 62px; */
 }
 
 .enter {
