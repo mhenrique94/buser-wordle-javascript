@@ -1,10 +1,21 @@
 let enteredKeys = []
-const wordOfTheDay = ['m','e','i','o','s']
+const wordOfTheDay = ['m','a','i','r','a']
+let wordOfTheDayTest = [...wordOfTheDay]
 const allowesKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "enter", "backspace"]
 console.log(wordOfTheDay)
 
 let screen = document.getElementById('tela')
 let screenChildren = screen.children
+
+//para adicionar event-listener nas teclas da tela
+document.querySelectorAll(".key-item").forEach((el) => {
+    el.addEventListener('click', function(el) {
+        console.log(el.srcElement.textContent.toLowerCase())
+    })
+})
+
+
+
 
 //chamar essa função toda vez que o enter for apertado, desabilitando os slots com conteudo
 const unableScreenSlots = () =>{
@@ -12,15 +23,6 @@ const unableScreenSlots = () =>{
         if(child.value != ''){
             child.setAttribute('disabled', '')
         }
-    }
-    if(enteredKeys.toString() == wordOfTheDay.toString()){
-        for (let child of screenChildren){
-            child.setAttribute('disabled', '')
-        }
-        setTimeout(() => {
-            alert('Parabens!!!!')
-        }, 1000);
-        
     }
 
     enteredKeys = []
@@ -41,17 +43,17 @@ document.addEventListener('keydown', function(event){
             console.log(enteredKeys)
         }
         
-        if (key == 'enter'){
+        if (key == 'enter' && enteredKeys.length == 5){
             insertKeys(enteredKeys)
             unableScreenSlots()
             enteredKeys = []
+            wordOfTheDayTest = [...wordOfTheDay]
         }
         
-        if (key == 'backspace'){
+        if (key == 'backspace'){ //
             for (let child of screenChildren){
                 if(child.value != '' && child.nextElementSibling?.value == '' && !child.getAttributeNames().includes('disabled')){
                     child.value = ''
-                    break
                 }
             }
 
@@ -64,31 +66,45 @@ document.addEventListener('keydown', function(event){
 let contScreenChild = 0
 
 const insertKeys = (enteredKeys) => {
-    if (enteredKeys.length < 5){
-        console.log('palavra incompleta')
+    if(enteredKeys.toString() == wordOfTheDayTest.toString()){
+        for (let child of screenChildren){
+            child.value = ''
+            child.setAttribute('disabled', '')
+            child.classList.remove('botao-quaseacerto')
+            child.classList.remove('botao-erro')
+            child.classList.add('botao-acerto')
+        }
+        setTimeout(() => {
+            alert('Parabens!!!!')
+            location.reload();
+        }, 500);
+        
     } else {
+        let count = 0
         for (let each of enteredKeys){
-            
 
-            if (wordOfTheDay.includes(each)){
-                if (enteredKeys.indexOf(each) == wordOfTheDay.indexOf(each)){
+            if (wordOfTheDayTest.includes(each)){
+                if (each == wordOfTheDayTest[count]){
                     console.log(`${each} tá no lugar certo`)
                     screen.children[contScreenChild].classList.add('botao-acerto') // arrumar
-                    contScreenChild++
-                } else {
+                    wordOfTheDayTest[count] = '*'
+                    
+                }else {
                     console.log(`${each} tá no lugar errado`)
                     screen.children[contScreenChild].classList.add('botao-quaseacerto')
-                    contScreenChild++
+                    wordOfTheDayTest[count] = '*'
                     //se incluir mas não bater o index, pinta de amarelo
                 }
-
-            } else {
-                console.log(`${each} nem existe`)
-                screen.children[contScreenChild].classList.add('botao-erro')
                 contScreenChild++
-                //pinta a celular de cinza e vai para a linha de baixo
+                count++
+                
+            }   else {
+                    console.log(`${each} nem existe`)
+                    screen.children[contScreenChild].classList.add('botao-erro')
+                        count++
+                        contScreenChild++
+                    //pinta a celular de cinza e vai para a linha de baixo
             }
         }
-        
     }
 }
