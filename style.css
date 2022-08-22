@@ -115,3 +115,29 @@ p {
     width: 72px;
 
 }
+
+#final {
+    height: 10vh;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ativo {
+    display: flex !important;
+    background-color: #69A969;
+}
+
+#final > h3 {
+    color: whitesmoke;
+}
+
+button.btnReload {
+    margin: 10px;
+    height: 27px;
+    width: 126px;
+    background: whitesmoke;
+    border: none;
+    cursor: pointer;
+}
