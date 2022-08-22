@@ -34,7 +34,7 @@ p {
     font-weight: bold;
 }
 
-#tela {
+#screen {
     font-size: 16pt;
     font-weight: bold;
     display: grid;
@@ -52,26 +52,27 @@ p {
     text-align: center;
     width: 62px;
     font-size: 2.3rem;
+    cursor: not-allowed;
     
 }
 
-.botao-inativo {
+.button-inactive {
     border: 3px solid #D2D5DA;
     background-color: white;
 }
-.botao-acerto {
+.button-correct {
     background-color: #69A969;
     border: 3px solid transparent;
     color: whitesmoke;
 }
 
-.botao-quaseacerto {
+.button-almost {
     background-color: #C7B563;
     border: 3px solid transparent;
     color: whitesmoke;
 }
 
-.botao-erro {
+.button-error {
     background-color: #787C7F;
     border: 3px solid transparent;
     color: whitesmoke;
@@ -85,24 +86,26 @@ p {
     font-size: 12pt;
     width: 48px;
     margin: 0 2px;
+    cursor: pointer;
 }
 .key-regular {
     background-color: #D2D5DA;
 }
 
-.key-erro{
+.key-error{
     background-color: #787C7F;
+    animation-duration: 500ms;
 }
 
-.key-quaseacerto {
+.key-almost {
     background-color: #C7B563
 }
 
-.key-acerto {
+.key-correct {
     background-color: #69A969;
 }
 
-.linha {
+.line {
     margin: auto auto 8px auto;
 }
 
@@ -111,7 +114,7 @@ p {
 
 }
 
-.special{
+.backspace{
     width: 72px;
 
 }

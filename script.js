@@ -985,10 +985,10 @@ const getWord= (wordsList)=> {
 }
 const wordOfTheDay = getWord(wordsList)
 let wordOfTheDayTest = [...wordOfTheDay]
-const allowesKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "enter", "backspace"]
+const allowesKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "enter", "backspace", "⇦"]
 console.log(wordOfTheDayTest)
 
-let screen = document.getElementById('tela')
+let screen = document.getElementById('screen')
 let screenChildren = screen.children
 
 //chamar essa função toda vez que o enter for apertado, desabilitando os slots com conteudo
@@ -1004,10 +1004,16 @@ const unableScreenSlots = () =>{
 
 
 const receiveKey = (event) =>{
-    const key = (event.key).toLowerCase()
+    if (event.key){
+        key = event.key.toLowerCase()
+
+    } else {
+        key = event.currentTarget.outerText.toLowerCase()
+        
+    }
 
     if(allowesKeys.includes(key)){
-        if (enteredKeys.length < 5 && key != 'backspace' && key != 'enter'){
+        if (enteredKeys.length < 5 && key != 'backspace' && key != 'enter' && key != '⇦'){
             for (let child of screenChildren){
                         if(child.value == '' && !child.getAttributeNames().includes('disabled')){
                             child.value = key
@@ -1025,7 +1031,7 @@ const receiveKey = (event) =>{
             wordOfTheDayTest = [...wordOfTheDay]
         }
         
-        if (key == 'backspace'){ //
+        if (key == 'backspace' || key == '⇦'){ //
             for (let child of screenChildren){
                 if(child.value != '' && child.nextElementSibling?.value == '' && !child.getAttributeNames().includes('disabled')){
                     child.value = ''
@@ -1041,13 +1047,14 @@ const receiveKey = (event) =>{
 let contScreenChild = 0
 
 const insertKeys = (enteredKeys) => {
+    
     if(enteredKeys.toString() == wordOfTheDayTest.toString()){
         for (let child of screenChildren){
             child.value = ''
             child.setAttribute('disabled', '')
-            child.classList.remove('botao-quaseacerto')
-            child.classList.remove('botao-erro')
-            child.classList.add('botao-acerto')
+            child.classList.remove('button-almost')
+            child.classList.remove('button-error')
+            child.classList.add('button-correct')
         }
 
         let final = document.getElementById('final')
@@ -1062,21 +1069,26 @@ const insertKeys = (enteredKeys) => {
         
     } else {
         let count = 0
+        let actualKey = ''
         for (let each of enteredKeys){
+            actualKey = document.getElementsByClassName(`key${each.toUpperCase()}`)
             if (each == wordOfTheDayTest[count]){
                 console.log(`${each} tá no lugar certo`)
-                screen.children[contScreenChild].classList.add('botao-acerto') // arrumar
+                screen.children[contScreenChild].classList.add('button-correct') // arrumar
                 wordOfTheDayTest[count] = '*'
+                actualKey[0].classList.add('key-correct')
             } else {
                 if (wordOfTheDayTest.includes(each)){
                     console.log(`${each} tá no lugar errado`)
-                    screen.children[contScreenChild].classList.add('botao-quaseacerto')
+                    screen.children[contScreenChild].classList.add('button-almost')
                     wordOfTheDayTest[wordOfTheDayTest.lastIndexOf(each)] = '*'
+                    actualKey[0].classList.add('key-almost')
                     //se incluir mas não bater o index, pinta de amarelo
                 }
                 else {
                     console.log(`${each} nem existe`)
-                    screen.children[contScreenChild].classList.add('botao-erro')
+                    screen.children[contScreenChild].classList.add('button-error')
+                    actualKey[0].classList.add('key-error')
                     //pinta a celular de cinza e vai para a linha de baixo
                 }
             }
@@ -1088,7 +1100,7 @@ const insertKeys = (enteredKeys) => {
     }   
 }
 
-document.addEventListener('keydown', receiveKey)
+document.addEventListener('keydown', (event) => {receiveKey(event)})
 document.querySelectorAll(".key-item").forEach((el) => {
-    el.addEventListener('click', receiveKey)
+    el.addEventListener('click', (event) => {receiveKey(event)})
 })
