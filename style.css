@@ -61,7 +61,7 @@ p {
     background-color: white;
 }
 .button-correct {
-    background-color: #69A969;
+    background-color: #69A969 !important;
     border: 3px solid transparent;
     color: whitesmoke;
 }

@@ -867,7 +867,6 @@ let wordsList = [
     'Douto',
     'Igual',
     'Findo',
-    'Pimba',
     'Irmao',
     'Legue',
     'Algia',
@@ -924,17 +923,19 @@ let wordsList = [
 ]
 
 const getWord= (wordsList)=> {
-    let random = Math.round(Math.random() * (wordsList.length - 0) + 0)
-    let newString = wordsList[random]
-    let newArray = newString.split('')
-    const lower = newArray.map(element => {
-        return element.toLowerCase();
-    });
-    // const lower = ['m', 'i', 's', 's', 'a']
+    // let random = Math.round(Math.random() * (wordsList.length - 0) + 0)
+    // let newString = wordsList[random]
+    // let newArray = newString.split('')
+    // const lower = newArray.map(element => {
+    //     return element.toLowerCase();
+    // });
+    const lower = ['a', 'l', 'e', 'n', 'o']
+
+    //criar função que retorna um array com base no array original (const array e cópia não estão funcionando)
     return lower
 }
 const wordOfTheDay = getWord(wordsList)
-let wordOfTheDayTest = [...wordOfTheDay]
+let wordOfTheDayTest = wordOfTheDay.map(obj => obj)
 const allowesKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "enter", "backspace", "⇦"]
 console.log(wordOfTheDayTest)
 
@@ -978,7 +979,7 @@ const receiveKey = (event) =>{
             insertKeys(enteredKeys)
             unableScreenSlots()
             enteredKeys = []
-            wordOfTheDayTest = [...wordOfTheDay]
+            wordOfTheDayTest = wordOfTheDay.map(obj => obj)
         }
         
         if (key == 'backspace' || key == '⇦'){ //
@@ -1020,16 +1021,27 @@ const insertKeys = (enteredKeys) => {
     } else {
         let count = 0
         let actualKey = ''
+
+        let countEachTyped = 0
+        for(let eachTyped of enteredKeys){
+            actualKey = document.getElementsByClassName(`key${eachTyped.toUpperCase()}`)
+            if (eachTyped == wordOfTheDayTest[countEachTyped]){
+                screen.children[contScreenChild].classList.add('button-correct')
+                wordOfTheDayTest[countEachTyped] = '*'
+                actualKey[0].classList.add('key-correct')
+            }
+            contScreenChild++
+            countEachTyped++
+        }
+        contScreenChild = contScreenChild-5
         for (let each of enteredKeys){
             actualKey = document.getElementsByClassName(`key${each.toUpperCase()}`)
             if (each == wordOfTheDayTest[count]){
-                console.log(`${each} ta no lugar certo`)
-                screen.children[contScreenChild].classList.add('button-correct') // arrumar
+                screen.children[contScreenChild].classList.add('button-correct')
                 wordOfTheDayTest[count] = '*'
                 actualKey[0].classList.add('key-correct')
             } else {
                 if (wordOfTheDayTest.includes(each)){
-                    console.log(`${each} ta no lugar errado`)
                     screen.children[contScreenChild].classList.add('button-almost')
                     wordOfTheDayTest[wordOfTheDayTest.lastIndexOf(each)] = '*'
                     actualKey[0].classList.add('key-almost')
@@ -1046,7 +1058,7 @@ const insertKeys = (enteredKeys) => {
             contScreenChild++
             count++
         }
-        wordOfTheDayTest = wordOfTheDay
+        wordOfTheDayTest = wordOfTheDay.map(obj => obj)
     }   
 }
 
