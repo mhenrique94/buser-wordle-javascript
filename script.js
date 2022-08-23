@@ -1007,6 +1007,8 @@ const insertKeys = (enteredKeys) => {
         }
 
         let final = document.getElementById('final')
+        let finalMsg = document.createTextNode('Acertou, parabéns!!!')
+        final.appendChild(finalMsg)
         setTimeout(() => {
             for (let child of screenChildren){
                 child.value = '!'
@@ -1021,6 +1023,7 @@ const insertKeys = (enteredKeys) => {
         let actualKey = ''
 
         let countEachTyped = 0
+        //inicia pela marcaçã dos caracteres na posição correta
         for(let eachTyped of enteredKeys){
             actualKey = document.getElementsByClassName(`key${eachTyped.toUpperCase()}`)
             if (eachTyped == wordOfTheDayTest[countEachTyped]){
@@ -1059,9 +1062,31 @@ const insertKeys = (enteredKeys) => {
             contScreenChild++
             count++
         }
+
+        
         wordOfTheDayTest = wordOfTheDay.map(obj => obj)
-    }   
+    }
+
+     
+    if (screenChildren[29].value != '' && screenChildren[29].value != undefined){
+        setTimeout(() => {
+            for (let child of screenChildren){
+                child.setAttribute('disabled', '')
+                child.classList.remove('button-almost')
+                child.classList.remove('button-error')
+                child.classList.add('inactive')
+                child.value = '!'
+            }
+            
+            let final = document.getElementById('final')
+            let finalMsg = document.createTextNode('Errou feio, hein?! Tente novamente!')
+            final.classList.add('inactive')
+            final.appendChild(finalMsg)
+            
+        }, 500);
+    } 
 }
+
 
 document.addEventListener('keydown', (event) => {receiveKey(event)})
 document.querySelectorAll(".key-item").forEach((el) => {

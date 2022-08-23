@@ -132,6 +132,11 @@ p {
     background-color: #69A969;
 }
 
+.inactive{
+    display: flex !important;
+    background-color: #ef7676;
+}
+
 #final > h3 {
     color: whitesmoke;
 }
