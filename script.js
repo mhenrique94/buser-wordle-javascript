@@ -8,7 +8,6 @@ let screenChildren = screen.children
 
 screenChildren[0].removeAttribute('readonly')
 screenChildren[0].focus()
-screenChildren[0].setAttribute('readonly', '')
 
 //chamar essa funcao toda vez que o enter for apertado, desabilitando os slots com conteudo
 const unableScreenSlots = () =>{
