@@ -922,16 +922,16 @@ let wordsList = [
     'Gabar'
 ]
 
+//função que retorna um array com base no array original
 const getWord= (wordsList)=> {
-    // let random = Math.round(Math.random() * (wordsList.length - 0) + 0)
-    // let newString = wordsList[random]
-    // let newArray = newString.split('')
-    // const lower = newArray.map(element => {
-    //     return element.toLowerCase();
-    // });
-    const lower = ['a', 'l', 'e', 'n', 'o']
+    let random = Math.round(Math.random() * (wordsList.length - 0) + 0)
+    let newString = wordsList[random]
+    let newArray = newString.split('')
+    const lower = newArray.map(element => {
+        return element.toLowerCase();
+    });
+    // const lower = ['a', 'l', 'e', 'n', 'o']
 
-    //criar função que retorna um array com base no array original (const array e cópia não estão funcionando)
     return lower
 }
 const wordOfTheDay = getWord(wordsList)
@@ -946,7 +946,6 @@ let screenChildren = screen.children
 const unableScreenSlots = () =>{
     for (let child of screenChildren){
         if(child.value != ''){
-            child.setAttribute('disabled', '')
         }
     }
 
@@ -963,6 +962,7 @@ const receiveKey = (event) =>{
         
     }
 
+    // insire a entrada apenas nos quadrados vazios, respeitando o limite de 5 caracteres
     if(allowesKeys.includes(key)){
         if (enteredKeys.length < 5 && key != 'backspace' && key != 'enter' && key != '⇦'){
             for (let child of screenChildren){
@@ -972,9 +972,8 @@ const receiveKey = (event) =>{
                         }
             }
             enteredKeys.push(key)
-            console.log(enteredKeys)
         }
-        
+        // chama a função de análise e tratamento após enter, caso o usuário tenha entrado com os 5 caracteres
         if (key == 'enter' && enteredKeys.length == 5){
             insertKeys(enteredKeys)
             unableScreenSlots()
@@ -990,7 +989,6 @@ const receiveKey = (event) =>{
             }
 
             enteredKeys.pop()
-            console.log(enteredKeys)
         }
     }
 }
@@ -1027,6 +1025,7 @@ const insertKeys = (enteredKeys) => {
             actualKey = document.getElementsByClassName(`key${eachTyped.toUpperCase()}`)
             if (eachTyped == wordOfTheDayTest[countEachTyped]){
                 screen.children[contScreenChild].classList.add('button-correct')
+                screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[countEachTyped] = '*'
                 actualKey[0].classList.add('key-correct')
             }
@@ -1038,18 +1037,20 @@ const insertKeys = (enteredKeys) => {
             actualKey = document.getElementsByClassName(`key${each.toUpperCase()}`)
             if (each == wordOfTheDayTest[count]){
                 screen.children[contScreenChild].classList.add('button-correct')
+                screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[count] = '*'
                 actualKey[0].classList.add('key-correct')
             } else {
                 if (wordOfTheDayTest.includes(each)){
                     screen.children[contScreenChild].classList.add('button-almost')
+                    screen.children[contScreenChild].setAttribute('disabled', '')
                     wordOfTheDayTest[wordOfTheDayTest.lastIndexOf(each)] = '*'
                     actualKey[0].classList.add('key-almost')
                     //se incluir mas nao bater o index, pinta de amarelo
                 }
                 else {
-                    console.log(`${each} nem existe`)
                     screen.children[contScreenChild].classList.add('button-error')
+                    screen.children[contScreenChild].setAttribute('disabled', '')
                     actualKey[0].classList.add('key-error')
                     //pinta a celular de cinza e vai para a linha de baixo
                 }

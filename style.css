@@ -144,3 +144,9 @@ button.btnReload {
     border: none;
     cursor: pointer;
 }
+
+.pulo-do-gato{
+    border: none;
+    width: 1px;
+    height: 1px;
+}
