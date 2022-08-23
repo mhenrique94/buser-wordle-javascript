@@ -28,7 +28,7 @@ const receiveKey = (event) =>{
         if (enteredKeys.length < 5 && key != 'backspace' && key != 'enter' && key != '⇦'){
             for (let child of screenChildren){
                         if(child.value === '' && !child.getAttributeNames().includes('disabled')){
-                            child.value = key
+                            child.value = key.toUpperCase()
                             break
                         }
             }
