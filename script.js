@@ -6,6 +6,7 @@ const allowesKeys = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 let screen = document.getElementById('screen')
 let screenChildren = screen.children
 
+screenChildren[0].focus()
 //chamar essa funcao toda vez que o enter for apertado, desabilitando os slots com conteudo
 const unableScreenSlots = () =>{
     for (let child of screenChildren){
