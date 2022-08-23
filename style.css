@@ -40,6 +40,10 @@ body {
     height: 100vh;
 }
 
+#keyboard {
+    display: block;
+}
+
 .button-inactive {
     border: 3px solid #D2D5DA;
     background-color: white;
@@ -144,10 +148,19 @@ button.btnReload {
     height: 1px;
 }
 
+.key-item {
+    display: inline-block;
+    line-height: 65px;
+    border-radius: 4px;
+    font-size: 12pt;
+    width: 48px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+
 @media only screen and (min-width: 300px) {
-    #keyboard {
-        display: none;
-    }
+    
     .grid-item {
         margin: 3px;
         line-height: 4rem;
@@ -187,9 +200,7 @@ button.btnReload {
 }
 
 @media only screen and (min-width: 1024px) {
-    #keyboard {
-        display: block;
-    }
+    
     
     
     .grid-item {
