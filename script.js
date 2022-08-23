@@ -27,7 +27,7 @@ const receiveKey = (event) =>{
     if(allowesKeys.includes(key)){
         if (enteredKeys.length < 5 && key != 'backspace' && key != 'enter' && key != '⇦'){
             for (let child of screenChildren){
-                        if(child.value == '' && !child.getAttributeNames().includes('disabled')){
+                        if(child.value === '' && !child.getAttributeNames().includes('disabled')){
                             child.value = key
                             break
                         }
@@ -35,16 +35,16 @@ const receiveKey = (event) =>{
             enteredKeys.push(key)
         }
         // chama a função de análise e tratamento após enter, caso o usuário tenha entrado com os 5 caracteres
-        if (key == 'enter' && enteredKeys.length == 5){
+        if (key === 'enter' && enteredKeys.length === 5){
             insertKeys(enteredKeys)
             unableScreenSlots()
             enteredKeys = []
             wordOfTheDayTest = wordOfTheDay.map(obj => obj)
         }
         
-        if (key == 'backspace' || key == '⇦'){ //
+        if (key === 'backspace' || key === '⇦'){ //
             for (let child of screenChildren){
-                if(child.value != '' && child.nextElementSibling?.value == '' && !child.getAttributeNames().includes('disabled')){
+                if(child.value != '' && child.nextElementSibling?.value === '' && !child.getAttributeNames().includes('disabled')){
                     child.value = ''
                 }
             }
@@ -57,7 +57,7 @@ let contScreenChild = 0
 
 const insertKeys = (enteredKeys) => {
     
-    if(enteredKeys.toString() == wordOfTheDayTest.toString()){
+    if(enteredKeys.toString() === wordOfTheDayTest.toString()){
         for (let child of screenChildren){
             child.value = ''
             child.setAttribute('disabled', '')
@@ -86,7 +86,7 @@ const insertKeys = (enteredKeys) => {
         //inicia pela marcaçã dos caracteres na posição correta
         for(let eachTyped of enteredKeys){
             actualKey = document.getElementsByClassName(`key${eachTyped.toUpperCase()}`)
-            if (eachTyped == wordOfTheDayTest[countEachTyped]){
+            if (eachTyped === wordOfTheDayTest[countEachTyped]){
                 screen.children[contScreenChild].classList.add('button-correct')
                 screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[countEachTyped] = '*'
@@ -98,7 +98,7 @@ const insertKeys = (enteredKeys) => {
         contScreenChild = contScreenChild-5
         for (let each of enteredKeys){
             actualKey = document.getElementsByClassName(`key${each.toUpperCase()}`)
-            if (each == wordOfTheDayTest[count]){
+            if (each === wordOfTheDayTest[count]){
                 screen.children[contScreenChild].classList.add('button-correct')
                 screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[count] = '*'

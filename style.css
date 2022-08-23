@@ -11,6 +11,25 @@
     
 }
 
+.header {
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.left-head {
+    width: 10%;
+    display: none;
+}
+
+.main-head {
+    width: 80%;
+}
+
+.right-head {
+    width: 10%;
+    display: none;
+}
+
 .wordle-ft {
     font-family: "Wordle", Arial, sans-serif;;
     
@@ -19,41 +38,6 @@
 body {
     text-align: center;
     height: 100vh;
-}
-
-p {
-    font-size: 30pt;
-    line-height: 50px;
-    font-weight: bold;
-}
-
-#game {
-    height: calc(100vh - 52px);
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-}
-
-#screen {
-    font-size: 16pt;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    margin: auto;
-    
-}
-
-.grid-item {
-    border: 3px solid #939598;
-    margin: 3px;
-    align-items: center;
-    line-height: 62px;
-    text-align: center;
-    width: 62px;
-    font-size: 2.3rem;
-    cursor: not-allowed;
-    
 }
 
 .button-inactive {
@@ -79,15 +63,29 @@ p {
 
 }
 
-.key-item {
-    display: inline-block;
-    line-height: 65px;
-    border-radius: 4px;
-    font-size: 12pt;
-    width: 48px;
-    margin: 0 2px;
-    cursor: pointer;
+p {
+    font-size: 30pt;
+    line-height: 50px;
+    font-weight: bold;
 }
+
+#game {
+    height: calc(100vh - 52px);
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+#screen {
+    font-size: 16pt;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: auto;
+    
+}
+
 .key-regular {
     background-color: #D2D5DA;
 }
@@ -107,16 +105,6 @@ p {
 
 .line {
     margin: auto auto 8px auto;
-}
-
-.enter {
-    width: 72px;
-
-}
-
-.backspace{
-    width: 72px;
-
 }
 
 #final {
@@ -154,4 +142,91 @@ button.btnReload {
     border: none;
     width: 1px;
     height: 1px;
+}
+
+@media only screen and (min-width: 300px) {
+    #keyboard {
+        display: none;
+    }
+    .grid-item {
+        margin: 3px;
+        line-height: 4rem;
+        text-align: center;
+        max-width: 62px;
+        max-height: 62px;
+        font-size: 1.6rem;
+    }
+
+    .key-item {
+        line-height: 38px;
+        width: 1.9rem;
+        max-width: 46px;
+        margin: 2px 2px;
+        cursor: pointer;
+        margin: auto;
+    }
+
+    .enter {
+        width: 16% !important;
+        max-width: 200px !important;
+    
+    }
+
+
+}
+
+@media only screen and (min-width: 800px) {
+    .grid-item {
+        max-width: 120px;
+        max-height: 120px;
+        font-size: 6rem;
+        line-height: 8rem;
+        width: 90%;
+        margin: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #keyboard {
+        display: block;
+    }
+    
+    
+    .grid-item {
+        border: 3px solid #939598;
+        margin: 3px;
+        align-items: center;
+        line-height: 62px;
+        text-align: center;
+        width: 62px;
+        font-size: 2.3rem;
+        cursor: not-allowed;
+        text-transform: uppercase;
+        
+    }
+    
+    
+    
+    .key-item {
+        display: inline-block;
+        line-height: 65px;
+        border-radius: 4px;
+        font-size: 12pt;
+        width: 48px;
+        margin: 0 2px;
+        cursor: pointer;
+    }
+    
+    
+    .enter {
+        width: 72px;
+    
+    }
+    
+    .backspace{
+        width: 72px;
+    
+    }
+    
+    
 }
