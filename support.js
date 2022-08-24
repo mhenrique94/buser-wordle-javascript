@@ -929,12 +929,23 @@ let atualizado = `${hoje.getDate()}/${hoje.getMonth()}/${hoje.getFullYear()}`
 
 //função que retorna um array com base no array original
 const getWord = (wordsList)=> {
-    let newString = wordsList[atualizado]
-    let newArray = newString.split('')
-    const lower = newArray.map(element => {
-        return element.toLowerCase();
-    });
-    return lower
+    if (localStorage.length > 0){
+        const newString = getLocalStorage()
+        let newArray = newString.split(',')
+        const lower = newArray.map(element => {
+            return element.toLowerCase();
+        });
+        return lower
+    } else {
+        let newString = wordsList[atualizado]
+        let newArray = newString.split('')
+        const lower = newArray.map(element => {
+            return element.toLowerCase();
+        });
+
+        setLocalStorage('writeWord', lower)
+        return lower
+    }
 }
 
 //checkbox do dark-mode

@@ -65,7 +65,7 @@ const insertKeys = (enteredKeys) => {
             child.classList.remove('button-error')
             child.classList.add('button-correct')
         }
-
+        localStorage.clear()
         let final = document.getElementById('final')
         let finalMsg = document.createTextNode('Acertou, parabéns!!!')
         final.appendChild(finalMsg)
@@ -139,7 +139,7 @@ const insertKeys = (enteredKeys) => {
                 child.classList.add('inactive')
                 child.value = '!'
             }
-            
+            localStorage.clear()
             let final = document.getElementById('final')
             let finalMsg = document.createTextNode('Errou feio, hein?! Tente novamente!')
             final.classList.add('inactive')
