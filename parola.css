@@ -2,9 +2,6 @@
     display: block;
 }
 
-.button-inactive {
-    border: 3px solid #D2D5DA;
-}
 .button-correct {
     background-color: #69A969 !important;
     border: 3px solid transparent;
@@ -103,6 +100,10 @@ button.btnReload {
     cursor: pointer;
 }
 
+.grid-item {
+    border: 1px solid #D2D5DA;
+}
+
 
 @media only screen and (min-width: 300px) {
     
@@ -149,7 +150,6 @@ button.btnReload {
     
     
     .grid-item {
-        border: 3px solid #939598;
         margin: 3px;
         align-items: center;
         line-height: 62px;

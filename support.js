@@ -948,23 +948,32 @@ checkbox.addEventListener('change', function () {
         header.style.setProperty('border-color', 'whitesmoke')
         for (let item of letterGrid) {
             item.style.setProperty('background-color', 'none')
+            item.style.setProperty('border', '1px solid whitesmoke')
+            
 
         }
 
         for (let key of keyboard) {
-            key.classList.remove('key-regular')
             key.style.setProperty('border', '1px solid whitesmoke')
-            key.style.setProperty('max-width', '44px solid whitesmoke')
+            key.style.setProperty('color', 'black')
 
         }
 
     } else {
         root.style.setProperty('color-scheme', 'light')
+        header.style.setProperty('border-color', 'black')
 
         for (let key of keyboard) {
+            key.classList.add('key-regular')
             key.style.setProperty('background-color', '#D2D5DA')
             key.style.setProperty('border-color', 'none')
+            key.style.setProperty('color', 'black')
 
+        }
+
+        for (let item of letterGrid) {
+            item.style.setProperty('background-color', 'none')
+            item.style.setProperty('border', '1px solid #939598')
         }
     }
 })
