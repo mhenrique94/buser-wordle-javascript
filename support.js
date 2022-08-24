@@ -939,28 +939,27 @@ const getWord = (wordsList)=> {
 //checkbox do dark-mode
 let checkbox = document.querySelector('input[type="checkbox"]')
 let root = document.querySelector(":root")
-let letterGrid = document.querySelectorAll('.button-inactive')
+let letterGrid = document.querySelectorAll('.grid-item')
 let keyboard = document.querySelectorAll('.key-item')
+let header = document.getElementById('header')
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
         root.style.setProperty('color-scheme', 'dark')
+        header.style.setProperty('border-color', 'whitesmoke')
         for (let item of letterGrid) {
-            item.style.setProperty('background-color', 'black')
+            item.style.setProperty('background-color', 'none')
 
         }
 
         for (let key of keyboard) {
             key.style.setProperty('background-color', 'black')
-            key.style.setProperty('border', '2px solid whitesmoke')
+            key.style.setProperty('border', '1px solid whitesmoke')
+            key.style.setProperty('max-width', '44px solid whitesmoke')
 
         }
 
     } else {
         root.style.setProperty('color-scheme', 'light')
-        for (let item of letterGrid) {
-            item.style.setProperty('background-color', 'white')
-
-        }
 
         for (let key of keyboard) {
             key.style.setProperty('background-color', '#D2D5DA')

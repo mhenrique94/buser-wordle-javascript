@@ -87,6 +87,7 @@ const insertKeys = (enteredKeys) => {
         for(let eachTyped of enteredKeys){
             actualKey = document.getElementsByClassName(`key${eachTyped.toUpperCase()}`)
             if (eachTyped === wordOfTheDayTest[countEachTyped]){
+                screen.children[contScreenChild].classList.remove('button-inactive')
                 screen.children[contScreenChild].classList.add('button-correct')
                 screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[countEachTyped] = '*'
@@ -99,6 +100,7 @@ const insertKeys = (enteredKeys) => {
         for (let each of enteredKeys){
             actualKey = document.getElementsByClassName(`key${each.toUpperCase()}`)
             if (each === wordOfTheDayTest[count]){
+                screen.children[contScreenChild].classList.remove('button-inactive')
                 screen.children[contScreenChild].classList.add('button-correct')
                 screen.children[contScreenChild].setAttribute('disabled', '')
                 wordOfTheDayTest[count] = '*'
@@ -112,6 +114,7 @@ const insertKeys = (enteredKeys) => {
                     //se incluir mas nao bater o index, pinta de amarelo
                 }
                 else {
+                    screen.children[contScreenChild].classList.remove('button-inactive')
                     screen.children[contScreenChild].classList.add('button-error')
                     screen.children[contScreenChild].setAttribute('disabled', '')
                     actualKey[0].classList.add('key-error')
