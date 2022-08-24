@@ -952,7 +952,7 @@ checkbox.addEventListener('change', function () {
         }
 
         for (let key of keyboard) {
-            key.style.setProperty('background-color', 'black')
+            key.classList.remove('key-regular')
             key.style.setProperty('border', '1px solid whitesmoke')
             key.style.setProperty('max-width', '44px solid whitesmoke')
 
