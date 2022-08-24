@@ -4,6 +4,11 @@
 Prévia:
 https://mhenrique94.github.io/buser-wordle-javascript/
 
+#### Observação:
+    * A versão publicada corresponde à versão presente na branch MAIN;
+    * Branch main: retorna um dia a cada vez que o jogo é carregado;
+    * Branch versao_cliente: restringe o jogo à uma palavra por dia, contendo 920 dias de jogo contando a partir do dia 24/08/2022.
+    
 #### Recursos contemplados:
     * Inserção via teclado físico;
     * Verificação caractere a caractere;

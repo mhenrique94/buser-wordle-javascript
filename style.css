@@ -131,6 +131,31 @@ input:checked + .slider:before {
     font-size: 1.4rem;
 }
 
+.ativo {
+    display: flex !important;
+    background-color: #69A969;
+    color: black;
+}
+
+.inactive{
+    display: flex !important;
+    background-color: #ef7676;
+    color: black;
+}
+
+button.btnReload {
+    margin: 10px;
+    height: 40%;
+    width: 40%;
+    background: whitesmoke;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 2rem;
+    color: black;
+}
+
+
 /* Variáveis do darkmode */
 
 @media (prefers-color-scheme: dark) {

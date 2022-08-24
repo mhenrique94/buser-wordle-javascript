@@ -942,6 +942,7 @@ let root = document.querySelector(":root")
 let letterGrid = document.querySelectorAll('.grid-item')
 let keyboard = document.querySelectorAll('.key-item')
 let header = document.getElementById('header')
+let bannerFinal = document.getElementsByClassName('btnReload')
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
         root.style.setProperty('color-scheme', 'dark')
@@ -950,22 +951,23 @@ checkbox.addEventListener('change', function () {
             item.style.setProperty('background-color', 'none')
             item.style.setProperty('border', '1px solid whitesmoke')
             
-
+            
         }
-
+        
         for (let key of keyboard) {
             key.style.setProperty('border', '1px solid whitesmoke')
             key.style.setProperty('color', 'black')
-
+            
         }
-
+        bannerFinal[0].style.setProperty('color', 'black')
+        
     } else {
         root.style.setProperty('color-scheme', 'light')
         header.style.setProperty('border-color', 'black')
 
         for (let key of keyboard) {
-            key.classList.add('key-regular')
-            key.style.setProperty('background-color', '#D2D5DA')
+            // key.classList.add('key-regular')
+            // key.style.setProperty('background-color', '#D2D5DA')
             key.style.setProperty('border-color', 'none')
             key.style.setProperty('color', 'black')
 
@@ -975,5 +977,6 @@ checkbox.addEventListener('change', function () {
             item.style.setProperty('background-color', 'none')
             item.style.setProperty('border', '1px solid #939598')
         }
+        bannerFinal[0].style.setProperty('color', 'black')
     }
 })

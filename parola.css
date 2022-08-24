@@ -61,29 +61,6 @@
     margin: auto auto 8px auto;
 }
 
-
-
-.ativo {
-    display: flex !important;
-    background-color: #69A969;
-}
-
-.inactive{
-    display: flex !important;
-    background-color: #ef7676;
-}
-
-button.btnReload {
-    margin: 10px;
-    height: 40%;
-    width: 40%;
-    background: whitesmoke;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 2rem;
-}
-
 .pulo-do-gato{
     border: none;
     width: 1px;
